@@ -1,14 +1,14 @@
 // FUNCTION IMPLEMENTATION
 const assertEqual = function(actual, expected) {
-//    for 
-
-
-    if (actual === expected){ 
-          console.log(`✔️ Assertion Passed: ${actual} === ${expected}`)
+    for (x = 0; x < actual.length; x++){
+        if (actual[x] === expected[x]){ 
+            console.log(`✔️ Assertion Passed: ${actual[x]} === ${expected[x]}`)
+        }
+        else {
+            return (`❌ Assertion Failed: ${actual[x]} !== ${expected[x]}`)
+        }
     }
-    else {
-          console.log(`❌ Assertion Failed: ${actual} !== ${expected}`)
-    }
+    return ("✔️ Assertion Passed: "+actual+" === "+expected);
 };
 
 const head = function(arrayToCheck){
@@ -20,7 +20,13 @@ const tail = function(arrayToCheck){
     return tailArray;
 };
 
-// TEST CODE
+/* TEST CODE
 const words = ["Yo Yo", "Lighthouse", "Labs"];
 console.log(tail(words));
-assertEqual(words.length, 3);
+assertEqual(words.length, 3);*/
+
+console.log(assertEqual([1, 2, 3], [1, 2, 3]));
+console.log(assertEqual([1, 2, 3], [1, 5, 3]));
+
+const result = tail(["Hello", "Lighthouse", "Labs"]);
+assertEqual(result, ["Lighthouse", "Labs"])
