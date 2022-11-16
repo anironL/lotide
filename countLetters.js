@@ -13,12 +13,13 @@ const countLetters = function(countedString){
   let trimString = countedString.split(" ").join("").toUpperCase();
 
   //assign keys
-  for (x = 0; x < trimString.length; x++){ 
-    countLetters[trimString.charAt(x)] = 0
-  }
-  //increment keys
-  for (x = 0; x < trimString.length; x++){
-    countLetters[trimString.charAt(x)]++
+  for (letter of trimString){
+    if (!countLetters[letter]){
+      countLetters[letter] = 1;
+    }
+    else{
+      countLetters[letter]++;
+    }
   }
   return countLetters;
 }
