@@ -7,48 +7,39 @@ const assertEqual = function(actual, expected) {
   return true;
 };
 
-// allItems: an array of strings that we need to look through
-// itemsToCount: an object specifying what to count
 const countOnly = function(allItems, itemsToCount) {
-//  console.log("Number of Keys:", Object.keys(allItems).length);
-//  console.log(allItems);
-//  console.log("Number of Keys:", Object.keys(itemsToCount).length);
-//  console.log(Object.keys(itemsToCount));
   const results = {};
-
   let itemsToCountKeyArray = Object.keys(itemsToCount); 
-//  console.log(itemsToCount[itemsToCountKeyArray[0]])
+//  console.log(itemsToCountKeyArray);
 
+//repeat 4x for the 4 different boolean comparatives
   for (x = 0; x < itemsToCountKeyArray.length; x++){
     let trueTotal = 0;
 
+//if the boolean === false I do not check
     if(itemsToCount[itemsToCountKeyArray[x]] === true){
-      //      console.log(itemsToCountKeyArray[x]);
       let trueName = itemsToCountKeyArray[x]
-
+//iterating down firstNames array 
+//iterating up the array to increment the key value of results
       for (y = 0; y < allItems.length; y++){
         if(assertEqual(allItems[y], itemsToCountKeyArray[x]) === true){
           trueTotal++
         }
       }         
       results[trueName] = trueTotal;
-//      console.log("Returned object:", results);
     }
-//    console.log(itemsToCountKeyArray[x],"total:", trueTotal);
   }
+//  console.log(results);
   return results
 }
 
 // TEST CODE
-//assertEqual("Lighthouse Labs", "Bootcamp");
-//assertEqual(1, 1);
-
 const firstNames = [
   "Karl",
   "Salima",
   "Agouhanna",
   "Fang",
-  "Kavith",
+  "Kavith", 
   "Jason",
   "Salima",
   "Fang",
@@ -61,3 +52,4 @@ console.log(assertEqual(result1["Jason"], 1));
 console.log(assertEqual(result1["Karima"], undefined));
 console.log(assertEqual(result1["Fang"], 2));
 console.log(assertEqual(result1["Agouhanna"], undefined));
+
