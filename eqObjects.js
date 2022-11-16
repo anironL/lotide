@@ -28,31 +28,41 @@ const assertArraysEqual = function(actualArray, expectedArray) {
 // Returns true if both objects have identical keys with identical values.
 // Otherwise you get back a big fat false!
 const eqObjects = function(object1, object2) {
+  //Exit if objects do not have the same number of keys
   if(Object.keys(object1).length !== Object.keys(object2).length){
     console.log("false: length difference");
     return false;
   }
-
-  //use .sort to make the objects equal order for comparative
-  //can also use stringify
-  let keysObject1 = Object.keys(object1).sort;
-  let keysObject2 = Object.keys(object2).sort;
+  //Use .sort to make the objects equal order for comparative
+  //Can also use JSON.stringify if we don't care about eqArray compat.
+  let keysObject1 = Object.keys(object1).sort();
+  let keysObject2 = Object.keys(object2).sort();
 
   for(x = 0; x < Object.keys(object1).length; x++){
-    if (keysObject1[x] !== keysObject2[x]){
+     //Exit if object keys do not match eg. a, b vs b, c
+     if (keysObject1[x] !== keysObject2[x]){
       console.log("false: key",x,"does not match, exiting loop.")
-      return false
+      return false;
+    }
+    //Loop through key elements
+    for (y = 0; y < 2; y++){
+//      console.log("ArrayCheck1", y, ":", object1[keysObject1[y]]);
+//      console.log("ArrayCheck2", y, ":", object2[keysObject2[y]]);
+      //Using stringify to easily compare already sorted arrays
+      if (JSON.stringify(object1[keysObject1[y]]) !== JSON.stringify(object2[keysObject1[y]])){
+        console.log("false: element",y,"does not match, exiting loop.")
+        return false;
+      }
     }
   }
   console.log("true: both objects match")
   return true;
 };
 
-
 //TEST CODE
-const ab = { a: "1", b: "2" };
-const ba = { b: "2", a: "1" };
-eqObjects(ab, ba); // => true
+const cd = { c: "1", d: ["2", 3] };
+const dc = { d: ["2", 3], c: "1" };
+eqObjects(cd, dc); // => true
 
-const abc = { a: "1", b: "2", c: "3" };
-eqObjects(ab, abc); // => false
+const cd2 = { c: "1", d: ["2", 3, 4] };
+eqObjects(cd, cd2); // => false
