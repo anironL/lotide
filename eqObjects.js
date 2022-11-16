@@ -25,8 +25,6 @@ const assertArraysEqual = function(actualArray, expectedArray) {
 //  return true; 
 };
 
-// Returns true if both objects have identical keys with identical values.
-// Otherwise you get back a big fat false!
 const eqObjects = function(object1, object2) {
   //Exit if objects do not have the same number of keys
   if(Object.keys(object1).length !== Object.keys(object2).length){
@@ -45,7 +43,7 @@ const eqObjects = function(object1, object2) {
       return false;
     }
     //Loop through key elements
-    for (y = 0; y < 2; y++){
+    for (y = 0; y < keysObject1.length; y++){
 //      console.log("ArrayCheck1", y, ":", object1[keysObject1[y]]);
 //      console.log("ArrayCheck2", y, ":", object2[keysObject2[y]]);
       //Using stringify to easily compare already sorted arrays
