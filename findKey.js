@@ -10,18 +10,19 @@ const assertEqual = function(actual, expected) {
 };
 
 const findKey = function(object, callback) {
-  const results = Object.keys(object);
+  const objecKeyArray = Object.keys(object);
  
   for (x = 0; x < Object.keys(object).length; x++){
-    if (callback(object[results[x]])){
-      console.log(object[results[x]]);
-      console.log(results[x]);
-      return results[x];
+    if (callback(object[objecKeyArray[x]])){
+      console.log(object[objecKeyArray[x]]);
+      console.log(objecKeyArray[x]);
+      return objecKeyArray[x];
     }
   }
   return "No match.";
 };
 
+//TEST CODE
 findKey({
   "Blue Hill": { stars: 1 },
   "Akaleri":   { stars: 3 },
