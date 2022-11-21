@@ -30,4 +30,4 @@ const middle = function(middleArray){
   }
 };
 
-module.exports = midde;
+module.exports = middle;
