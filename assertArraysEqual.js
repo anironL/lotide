@@ -1,6 +1,6 @@
 const assertArraysEqual = function(actualArray, expectedArray) {
   if (actualArray.length !== expectedArray.length){
-    console.log("false: differing array lengths");
+//    console.log("false: differing array lengths");
     return false;
   }
   
@@ -9,11 +9,11 @@ const assertArraysEqual = function(actualArray, expectedArray) {
 //    console.log(`${actualArray[x]} === ${expectedArray[x]}`);
     }
     else{
-      console.log(`false: element ${x} of array 1 (${actualArray[x]}) !== array 2 (${expectedArray[x]})`);
+//      console.log(`false: element ${x} of array 1 (${actualArray[x]}) !== array 2 (${expectedArray[x]})`);
       return false;
     }
   }
-  console.log("true");
+//  console.log("true");
   return true; 
 };
 
